@@ -1,0 +1,100 @@
+:root {
+    --solar: #f5b301;
+    --solar-dark: #d49200;
+    --ink: #1a1a1a;
+    --muted: #5c6570;
+}
+
+body {
+    font-family: "Segoe UI", system-ui, sans-serif;
+    color: var(--ink);
+    background: #f7f6f2;
+}
+
+.navbar-wattloc {
+    background: var(--ink);
+}
+
+.navbar-wattloc .nav-link,
+.navbar-wattloc .navbar-brand {
+    color: #fff !important;
+}
+
+.navbar-wattloc .nav-link:hover {
+    color: var(--solar) !important;
+}
+
+.btn-solar {
+    background: var(--solar);
+    border-color: var(--solar);
+    color: var(--ink);
+    font-weight: 600;
+}
+
+.btn-solar:hover {
+    background: var(--solar-dark);
+    border-color: var(--solar-dark);
+    color: var(--ink);
+}
+
+.hero {
+    background:
+        linear-gradient(120deg, rgba(26, 26, 26, 0.88), rgba(26, 26, 26, 0.55)),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Crect fill='%23f5b301' width='160' height='160'/%3E%3Cpath fill='%231a1a1a' fill-opacity='.08' d='M0 80h160v80H0z'/%3E%3C/svg%3E");
+    color: #fff;
+    padding: 5.5rem 0 4.5rem;
+}
+
+.hero h1 {
+    font-weight: 700;
+    letter-spacing: -0.03em;
+}
+
+.card-product img,
+.pack-cover,
+.placeholder-visual {
+    height: 180px;
+    object-fit: cover;
+    width: 100%;
+    background: linear-gradient(135deg, #f5b301, #1a1a1a);
+}
+
+.placeholder-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 2.2rem;
+}
+
+.step-card {
+    border: 0;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+footer.site-footer {
+    background: var(--ink);
+    color: #ddd;
+}
+
+.admin-sidebar {
+    min-height: 100vh;
+    background: #111;
+}
+
+.admin-sidebar a {
+    color: #ddd;
+}
+
+.admin-sidebar a.active,
+.admin-sidebar a:hover {
+    color: var(--solar);
+}
+
+.calc-step {
+    display: none;
+}
+
+.calc-step.active {
+    display: block;
+}
