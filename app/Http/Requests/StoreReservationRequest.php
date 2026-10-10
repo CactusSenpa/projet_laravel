@@ -15,6 +15,8 @@ class StoreReservationRequest extends FormRequest
     {
         return [
             'pack_id' => 'nullable|exists:packs,id',
+            'product_id' => 'nullable|exists:products,id',
+            'product_quantity' => 'nullable|integer|min:1|max:100',
             'quote_id' => 'nullable|exists:quotes,id',
             'customer_name' => 'required|string|max:120',
             'customer_phone' => 'required|string|max:30',

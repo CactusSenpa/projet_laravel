@@ -3,7 +3,21 @@
 @section('content')
 <div class="bg-white p-4 rounded">
     <p><strong>{{ $reservation->customer_name }}</strong> — {{ $reservation->customer_phone }} — {{ $reservation->customer_email }}</p>
-    <p>Pack : {{ $reservation->pack?->name }} • {{ $reservation->location }} • {{ $reservation->address }}</p>
+    @if ($reservation->pack)
+        <p><strong>Pack :</strong> {{ $reservation->pack->name }}</p>
+    @endif
+    @if ($reservation->products->isNotEmpty())
+        <p><strong>Matériel individuel réservé :</strong></p>
+        <ul>
+            @foreach ($reservation->products as $rp)
+                <li>{{ $rp->quantity }} × {{ $rp->product?->name }} ({{ tnd($rp->product?->daily_price) }}/j • caution {{ tnd($rp->product?->deposit) }})</li>
+            @endforeach
+        </ul>
+    @endif
+    @if (! $reservation->pack && $reservation->products->isEmpty())
+        <p class="text-muted"><em>Matériel : à confirmer avec l'équipe</em></p>
+    @endif
+    <p>Lieu : {{ $reservation->location }} @if($reservation->address)({{ $reservation->address }})@endif</p>
     <p>Du {{ $reservation->start_date->format('d/m/Y') }} au {{ $reservation->end_date->format('d/m/Y') }} ({{ $reservation->days() }} jour(s))</p>
     <p>Livraison : {{ $reservation->delivery_required ? 'oui ('.tnd($reservation->delivery_fee).')' : 'non' }}</p>
     <p>Total estimé {{ tnd($reservation->estimated_price) }} • Caution {{ tnd($reservation->deposit_amount) }}</p>

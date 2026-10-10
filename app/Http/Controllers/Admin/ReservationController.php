@@ -17,14 +17,14 @@ class ReservationController extends Controller
 
     public function index(): View
     {
-        $reservations = Reservation::query()->with('pack')->latest()->paginate(20);
+        $reservations = Reservation::query()->with(['pack', 'products.product'])->latest()->paginate(20);
 
         return view('admin.reservations.index', compact('reservations'));
     }
 
     public function show(Reservation $reservation): View
     {
-        $reservation->load(['pack.products', 'quote.items']);
+        $reservation->load(['pack.products', 'products.product', 'quote.items']);
 
         return view('admin.reservations.show', compact('reservation'));
     }

@@ -39,7 +39,7 @@
                     @endif
                 </li>
             </ul>
-            <a class="btn btn-solar" href="{{ route('reservation.create') }}">Réserver</a>
+            <a class="btn btn-solar" href="{{ route('reservation.create', ['product' => $product->id]) }}">Réserver ce produit</a>
         </div>
     </div>
 </div>

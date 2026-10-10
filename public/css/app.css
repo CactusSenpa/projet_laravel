@@ -98,3 +98,27 @@ footer.site-footer {
 .calc-step.active {
     display: block;
 }
+
+/* Flatpickr styling for WattLoc */
+.flatpickr-calendar {
+    font-family: inherit;
+    border-radius: 12px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+    border: 1px solid #e2e8f0;
+}
+.flatpickr-day.selected,
+.flatpickr-day.startRange,
+.flatpickr-day.endRange {
+    background: var(--solar) !important;
+    border-color: var(--solar) !important;
+    color: var(--ink) !important;
+    font-weight: 700;
+}
+.flatpickr-day.flatpickr-disabled,
+.flatpickr-day.flatpickr-disabled:hover {
+    color: #dc3545 !important;
+    background: #fde8e8 !important;
+    text-decoration: line-through;
+    opacity: 0.65;
+    cursor: not-allowed !important;
+}

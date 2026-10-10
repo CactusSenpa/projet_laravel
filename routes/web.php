@@ -28,6 +28,7 @@ Route::post('/calculator/calculate', [CalculatorController::class, 'calculate'])
 Route::get('/calculator/result/{quote}', [CalculatorController::class, 'result'])->name('calculator.result');
 
 Route::get('/reservation', [ReservationController::class, 'create'])->name('reservation.create');
+Route::get('/reservation/unavailable-dates', [ReservationController::class, 'unavailableDates'])->name('reservation.unavailable-dates');
 Route::post('/reservation', [ReservationController::class, 'store'])->name('reservation.store');
 Route::get('/reservation/{reservation}/confirmation', [ReservationController::class, 'success'])->name('reservation.success');
 
