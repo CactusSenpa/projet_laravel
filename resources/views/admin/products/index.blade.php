@@ -12,10 +12,14 @@
             <td>{{ tnd($product->daily_price) }}</td>
             <td>{{ $product->quantity }}</td>
             <td>
-                <a href="{{ route('admin.products.edit', $product) }}">Modifier</a>
+                <a href="{{ route('admin.products.edit', $product) }}" class="btn btn-primary btn-sm rounded-3 px-3">
+                    <i class="bi bi-pencil-square me-1"></i> Modifier
+                </a>
                 <form class="d-inline" method="post" action="{{ route('admin.products.destroy', $product) }}" onsubmit="return confirm('Supprimer ?')">
                     @csrf @method('DELETE')
-                    <button class="btn btn-link text-danger p-0">Supprimer</button>
+                    <button type="submit" class="btn btn-danger btn-sm rounded-3 px-3">
+                        <i class="bi bi-trash me-1"></i> Supprimer
+                    </button>
                 </form>
             </td>
         </tr>

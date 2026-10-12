@@ -12,10 +12,15 @@
             <td>{{ $pack->energy_capacity_wh }}</td>
             <td>{{ $pack->products_count }}</td>
             <td>
-                <a href="{{ route('admin.packs.edit', $pack) }}">Modifier</a>
+                <a href="{{ route('admin.packs.edit', $pack) }}"
+                   class="btn btn-primary btn-sm rounded-3 px-3">
+                    <i class="bi bi-pencil-square me-1"></i> Modifier
+                </a>
                 <form class="d-inline" method="post" action="{{ route('admin.packs.destroy', $pack) }}" onsubmit="return confirm('Supprimer ?')">
                     @csrf @method('DELETE')
-                    <button class="btn btn-link text-danger p-0">Supprimer</button>
+                    <button type="submit" class="btn btn-danger btn-sm rounded-3 px-3">
+                        <i class="bi bi-trash me-1"></i> Supprimer
+                    </button>
                 </form>
             </td>
         </tr>

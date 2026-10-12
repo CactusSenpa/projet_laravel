@@ -68,10 +68,10 @@ class Reservation extends Model
     public function statusLabel(): string
     {
         return match ($this->status) {
-            'pending' => 'En attente',
-            'confirmed' => 'Confirmée',
-            'cancelled' => 'Annulée',
-            'completed' => 'Terminée',
+            'pending' => 'pending',
+            'confirmed' => 'confirmed',
+            'cancelled' => 'cancelled',
+            'completed' => 'completed',
             default => $this->status,
         };
     }

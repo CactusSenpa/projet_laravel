@@ -21,9 +21,11 @@
             <td>{{ $appliance->default_duration_hours }}</td>
             <td>{{ $appliance->has_startup_surge ? 'oui ×'.$appliance->startup_factor : 'non' }}</td>
             <td>
-                <form method="post" action="{{ route('admin.appliances.destroy', $appliance) }}">
+                <form method="post" action="{{ route('admin.appliances.destroy', $appliance) }}" onsubmit="return confirm('Supprimer ?')">
                     @csrf @method('DELETE')
-                    <button class="btn btn-link text-danger p-0">Supprimer</button>
+                    <button type="submit" class="btn btn-danger btn-sm rounded-3 px-3">
+                        <i class="bi bi-trash me-1"></i> Supprimer
+                    </button>
                 </form>
             </td>
         </tr>

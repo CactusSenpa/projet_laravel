@@ -21,7 +21,23 @@
             </td>
             <td>{{ $reservation->start_date->format('d/m/Y') }} → {{ $reservation->end_date->format('d/m/Y') }}</td>
             <td>{{ tnd($reservation->estimated_price) }}</td>
-            <td>{{ $reservation->statusLabel() }}</td>
+
+<td>
+    @if ($reservation->status === 'confirmed')
+        <span class="badge text-bg-success">
+            {{ $reservation->statusLabel() }}
+        </span>
+    @elseif ($reservation->status === 'cancelled')
+        <span class="badge text-bg-danger">
+            {{ $reservation->statusLabel() }}
+        </span>
+    @else
+        <span class="badge text-bg-warning">
+            {{ $reservation->statusLabel() }}
+        </span>
+    @endif
+</td>
+
         </tr>
     @endforeach
     </tbody>
