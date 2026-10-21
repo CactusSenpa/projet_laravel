@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\View\View;
 
 class ContactController extends Controller
@@ -22,8 +23,23 @@ class ContactController extends Controller
             'message' => 'required|string|max:2000',
         ]);
 
-        $text = "Bonjour WattLoc, message depuis le site.\nNom : {$data['name']}\nTél : {$data['phone']}\n{$data['message']}";
+        $text = "Bonjour WattLoc, message depuis le site.\n"
+            ."Nom : {$data['name']}\n"
+            ."Tél : {$data['phone']}\n"
+            ."E-mail : ".($data['email'] ?? 'Non renseigné')."\n\n"
+            ."Message :\n{$data['message']}";
 
-        return redirect()->away(whatsapp_url($text));
+        Mail::raw($text, function ($mail) use ($data): void {
+            $mail->to(config('mail.from.address'))
+                ->subject('Nouveau message depuis le formulaire de contact');
+
+            if (! empty($data['email'])) {
+                $mail->replyTo($data['email'], $data['name']);
+            }
+        });
+
+        return redirect()
+            ->route('contact')
+            ->with('status', 'Votre message a bien été envoyé.');
     }
 }

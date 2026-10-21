@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Administrateur WattLoc',
                 'phone' => '20000000',
-                'password' => Hash::make('password'),
+                'password' => Hash::make('aazze'),
                 'role' => 'admin',
                 'is_active' => true,
             ]
@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
 
         $settings = [
             'company_name' => 'WattLoc',
-            'whatsapp_number' => '21620000000',
+            'whatsapp_number' => '21653663608',
             'default_system_efficiency' => '0.85',
             'default_energy_margin' => '1.20',
             'default_solar_hours' => '4.5',

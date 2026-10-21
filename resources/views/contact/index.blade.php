@@ -5,7 +5,14 @@
 @section('content')
 <div class="container py-5 col-lg-6">
     <h1>Contact</h1>
-    <p>Décrivez votre projet : nous ouvrons WhatsApp avec un message prérempli.</p>
+    <p>Décrivez votre projet et envoyez-nous votre message.</p>
+
+    @if (session('status'))
+        <div class="alert alert-success" role="alert">
+            {{ session('status') }}
+        </div>
+    @endif
+
     <form method="post" action="{{ route('contact.send') }}">
         @csrf
         <div class="mb-3">
@@ -24,7 +31,7 @@
             <label class="form-label">Message</label>
             <textarea class="form-control" name="message" rows="4" required></textarea>
         </div>
-        <button class="btn btn-solar">Envoyer via WhatsApp</button>
+        <button class="btn btn-solar">Envoyer le message</button>
     </form>
 </div>
 @endsection

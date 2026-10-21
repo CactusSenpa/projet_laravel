@@ -10,7 +10,7 @@
             <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
                 <li class="nav-item"><a class="nav-link" href="{{ route('catalogue') }}">Catalogue</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('packs.index') }}">Packs</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('calculator.index') }}">Calculateur</a></li>
+                <li class="nav-it;v;vem"><a class="nav-link" href="{{ route('calculator.index') }}">Calculateur</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('reservation.create') }}">Réserver</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('faq') }}">FAQ</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact</a></li>
