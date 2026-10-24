@@ -9,6 +9,7 @@ body {
     font-family: "Segoe UI", system-ui, sans-serif;
     color: var(--ink);
     background: #f7f6f2;
+    min-height: 100vh;
 }
 
 .navbar-wattloc {

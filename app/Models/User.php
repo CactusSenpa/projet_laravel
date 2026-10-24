@@ -5,16 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail as MustVerifyEmailContract;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmailContract
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, MustVerifyEmail, Notifiable;
 
     protected $fillable = [
         'name',
         'email',
         'phone',
+        'profile_photo',
         'password',
         'role',
         'is_active',
@@ -34,6 +37,11 @@ class User extends Authenticatable
     public function isAdmin(): bool
     {
         return $this->role === 'admin' && $this->is_active;
+    }
+
+    public function isClient(): bool
+    {
+        return $this->role === 'customer' && $this->is_active;
     }
 
     public function reservations()

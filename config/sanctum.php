@@ -33,7 +33,9 @@ return [
     |
     */
 
-    'guard' => ['web'],
+    // The web application continues to use the session guard directly.
+    // API requests must use their bearer token, even if a browser session exists.
+    'guard' => [],
 
     /*
     |--------------------------------------------------------------------------

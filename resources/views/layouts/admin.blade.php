@@ -18,6 +18,7 @@
                 ['admin.products.index', 'Produits', 'box'],
                 ['admin.packs.index', 'Packs', 'collection'],
                 ['admin.reservations.index', 'Réservations', 'calendar-check'],
+                ['admin.clients.index', 'Clients', 'people'],
                 ['admin.availability.index', 'Disponibilité', 'clock'],
                 ['admin.appliances.index', 'Appareils', 'plug'],
                 ['admin.settings.index', 'Paramètres', 'gear'],

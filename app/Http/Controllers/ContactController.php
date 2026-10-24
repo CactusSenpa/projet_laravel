@@ -30,7 +30,7 @@ class ContactController extends Controller
             ."Message :\n{$data['message']}";
 
         Mail::raw($text, function ($mail) use ($data): void {
-            $mail->to(config('mail.from.address'))
+            $mail->to(config('mail.contact_address'))
                 ->subject('Nouveau message depuis le formulaire de contact');
 
             if (! empty($data['email'])) {

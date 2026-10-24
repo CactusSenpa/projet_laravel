@@ -148,6 +148,13 @@ class ReservationController extends Controller
 
     public function success(Reservation $reservation): View
     {
+        if ($reservation->user_id
+            && auth()->check()
+            && ! auth()->user()->isAdmin()
+            && $reservation->user_id !== auth()->id()) {
+            abort(403);
+        }
+
         $reservation->load(['pack', 'products.product']);
         $message = $this->whatsappMessage($reservation);
 

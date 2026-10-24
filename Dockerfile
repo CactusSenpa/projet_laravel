@@ -45,8 +45,11 @@ COPY . .
 COPY --from=frontend /app/public/build ./public/build
 COPY docker/entrypoint.sh /usr/local/bin/laravel-entrypoint
 
-RUN chmod +x /usr/local/bin/laravel-entrypoint \
+RUN sed -i 's/\r$//' /usr/local/bin/laravel-entrypoint \
+    && chmod +x /usr/local/bin/laravel-entrypoint \
     && composer dump-autoload --optimize --no-interaction \
+    && rm -rf public/storage \
+    && ln -s /var/www/html/storage/app/public public/storage \
     && chown -R www-data:www-data storage bootstrap/cache
 
 ENTRYPOINT ["laravel-entrypoint"]

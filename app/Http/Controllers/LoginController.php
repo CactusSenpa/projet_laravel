@@ -27,13 +27,19 @@ class LoginController extends Controller
 
         $request->session()->regenerate();
 
-        if (! $request->user()->isAdmin()) {
+        if (! $request->user()->is_active) {
             Auth::logout();
 
-            return back()->withErrors(['email' => 'Compte administrateur requis.']);
+            return back()->withErrors(['email' => 'Ce compte est désactivé.']);
         }
 
-        return redirect()->intended(route('admin.dashboard'));
+        if ($request->user()->isClient() && ! $request->user()->hasVerifiedEmail()) {
+            return redirect()->route('verification.notice');
+        }
+
+        return redirect()->intended($request->user()->isAdmin()
+            ? route('admin.dashboard')
+            : route('client.profile'));
     }
 
     public function logout(Request $request): RedirectResponse
